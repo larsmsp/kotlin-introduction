@@ -1,25 +1,23 @@
 package com.computas.kotlin.model
 
-import com.computas.kotlin.dto.PersonDto
+import com.computas.kotlin.dto.KotelettDto
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
 @Table(name = "person")
-class Person(
+class Kotelett(
         @Id val id: Long? = null,
-        val firstname: String,
-        val lastname: String,
-        val age: Int) {
+        val origin: String,
+        val weight: Int) {
 
-    private constructor() : this(firstname = "", lastname = "", age = 0)
+    private constructor() : this(origin = "", weight = 0)
 
     companion object {
-        fun fromDto(dto: PersonDto) = Person(
+        fun fromDto(dto: KotelettDto) = Kotelett(
                 dto.id,
                 dto.firstname,
-                dto.lastname,
                 dto.age)
     }
 }
