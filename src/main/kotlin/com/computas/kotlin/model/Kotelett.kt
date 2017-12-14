@@ -10,14 +10,16 @@ import javax.persistence.Table
 class Kotelett(
         @Id val id: Long? = null,
         val origin: String,
-        val weight: Int) {
+        val weight: Double) {
 
-    private constructor() : this(origin = "", weight = 0)
+    private constructor() : this(origin = "", weight = 0.0)
+
+    fun toDto() : KotelettDto = KotelettDto(id!!, origin, weight)
 
     companion object {
         fun fromDto(dto: KotelettDto) = Kotelett(
                 dto.id,
-                dto.firstname,
-                dto.age)
+                dto.origin,
+                dto.weight)
     }
 }

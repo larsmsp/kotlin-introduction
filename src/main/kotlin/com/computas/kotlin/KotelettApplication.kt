@@ -2,11 +2,11 @@ package com.computas.kotlin
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KotelettApplication {
+class KotelettApplication
 
-    fun main(args: Array<String>) {
-        SpringApplication.run(KotelettApplication::class, *args)
-    }
+fun main(args: Array<String>) {
+  runApplication<KotelettApplication>(*args)
 }
