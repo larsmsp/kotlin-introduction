@@ -1,16 +1,16 @@
 package com.computas.kotlin.model
 
 import com.computas.kotlin.dto.KotelettDto
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
-@Table(name = "person")
+@Table(name = "kotelett")
 class Kotelett(
-        @Id val id: Long? = null,
-        val origin: String,
-        val weight: Double) {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    val id: Long? = null,
+    val origin: String,
+    val weight: Double) {
 
     private constructor() : this(origin = "", weight = 0.0)
 

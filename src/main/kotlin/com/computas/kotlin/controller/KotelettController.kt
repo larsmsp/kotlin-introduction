@@ -19,13 +19,13 @@ class KotelettController @Autowired constructor(
   fun getAllKoteletter() = kotelettService.getAllKoteletter()
 
   @GetMapping("/{id}", produces = arrayOf(APPLICATION_JSON_VALUE))
-  fun getKotelett(@RequestParam id: Long) = kotelettService.getKotelett(id)
+  fun getKotelett(@PathVariable id: Long) = kotelettService.getKotelett(id)
 
-  @GetMapping("/search")
-  fun getByWeight(@RequestParam minimumWeight: Int?,
-                  @RequestParam origin: String?) : List<KotelettDto> {
-    val koteletter = minimumWeight?.let { getAllKoteletter().filter { it.weight >= minimumWeight } } ?: getAllKoteletter()
-    return origin?.let { koteletter.filter { k -> k.origin == origin } } ?: koteletter
-  }
+  @GetMapping("/by-weight")
+  fun getByWeight(@RequestParam v: Double?) : List<KotelettDto> =
+      v?.let { getAllKoteletter().filter { it.weight >= v } } ?: getAllKoteletter()
 
+  @GetMapping("/by-origin")
+  fun getByOrigin(@RequestParam v: String?) : List<KotelettDto> =
+      v?.let { getAllKoteletter().filter { k -> k.origin.toLowerCase() == v.toLowerCase() } } ?: getAllKoteletter()
 }
