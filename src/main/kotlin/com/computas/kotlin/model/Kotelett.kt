@@ -17,9 +17,6 @@ class Kotelett(
   fun toDto() : KotelettDto = KotelettDto(id!!, origin, weight)
 
   companion object {
-    fun fromDto(dto: KotelettDto) = Kotelett(
-        dto.id,
-        dto.origin,
-        dto.weight)
+    fun fromDto(dto: KotelettDto) = Kotelett(dto.id, dto.origin, dto.weight)
   }
 }
