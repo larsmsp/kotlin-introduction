@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service
 
 @Service("kotelettService")
 class KotelettService @Autowired constructor(
-        private val kotelettRepository: KotelettRepository
+    private val kotelettRepository: KotelettRepository
 ) {
 
-    fun getAllKoteletter() = kotelettRepository.findAll().map { it.toDto() }
+  fun getAllKoteletter() = kotelettRepository.findAll().map { it.toDto() }
 
-    fun getKotelett(kotelettId: Long) = kotelettRepository.getOne(kotelettId).toDto()
+  fun getKotelett(kotelettId: Long) = kotelettRepository.getOne(kotelettId).toDto()
 
-    fun saveKotelett(kotelett: KotelettDto) = kotelettRepository.save(Kotelett.fromDto(kotelett))
+  fun saveKotelett(kotelett: KotelettDto) = kotelettRepository.save(Kotelett.fromDto(kotelett))
 }
